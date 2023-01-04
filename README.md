@@ -1,8 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Chat OpenAI
 
-## Getting Started
+### Requirements
 
-First, run the development server:
+- Node.js 14+ and npm
+
+### Getting started
+
+Run the following command on your local environment:
+
+```shell
+git clone https://github.com/hadi-16/nextjs-chat-openai.git your-project-name
+cd your-project-name
+npm install
+```
+
+## How to run app
+
+1. Get api key from OpenAI [https://beta.openai.com](https://beta.openai.com).
+2. Edit env.example to .env
+3. Enter api key to .env
+4. Run the development server : 
 
 ```bash
 npm run dev
@@ -10,27 +27,28 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```shell
+.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+├── components                      # Components folder
+├── pages                           # Next JS Pages
+├── public                          # Public assets folder
+├── store                           # Store folder
+├── styles                          # Next JS Style
+├── README.md                       # README file
+├── tailwind.config.js              # Tailwind CSS configuration
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- ⚡ [Next.js](https://nextjs.org) for Fullstack Framework Javascript
+- 🤖 Integrate Chatbot API with [OpenAI](https://openai.com)
+- 💎 Integrate Styling with [Tailwind CSS](https://tailwindcss.com)
+- ⚙️ State Management with [Zustand](https://www.npmjs.com/package/zustand)
+- 🔦 Animation Chats with [AutoAnimate](https://auto-animate.formkit.com)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Screenshot Chat | Screenshot Chats |
+| --- | --- |
+| ![SS Chat](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chat.jpeg?raw=true "ss nextjs chat openai") | ![SS Chats](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chats.jpeg?raw=true "ss nextjs chat openai") |
