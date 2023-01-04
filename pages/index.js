@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { ChatStore } from "../store/ChatStore";
 import dayjs from "dayjs";
 var relativeTime = require("dayjs/plugin/relativeTime");
@@ -55,6 +55,24 @@ export default function PageHome() {
     return dayjs().to(dayjs(date));
   };
 
+  // ref
+  const chatRef = useRef(null);
+  const loadingRef = useRef(null);
+
+  useEffect(() => {
+    // if there is a new chat scroll to them
+    if (chats && chatRef?.current) {
+      chatRef?.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chats, chatRef]);
+
+  useEffect(() => {
+    // if there is a loading scroll to them
+    if (loading && loadingRef?.current) {
+      loadingRef?.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [loading, loadingRef]);
+
   return (
     // client side it means client side rendering
     <ClientSide>
@@ -104,7 +122,10 @@ export default function PageHome() {
           <div className="flex flex-col flex-grow h-0 p-4 overflow-auto py-20 md:py-10">
             <>
               {chats?.length === 0 && (
-                <div className="flex items-center justify-center h-full w-full">
+                <div
+                  className="flex items-center justify-center h-full w-full"
+                  ref={chatRef}
+                >
                   <div className="text-center text-gray-600">
                     <p>No message here...</p>
                     <p>Send a message or tap the greeting icon below</p>
@@ -159,7 +180,10 @@ export default function PageHome() {
                   ))}
               </>
               {loading && (
-                <div className="text-center flex justify-center py-4">
+                <div
+                  className="text-center flex justify-center py-4"
+                  ref={loadingRef}
+                >
                   <IconLoadingHourglass />
                 </div>
               )}
