@@ -14,6 +14,7 @@ import {
   IconTrash,
 } from "../components/Icon";
 import ClientSide from "../components/ClientSide";
+import AnimateChats from "../components/AnimateChats";
 
 export default function PageHome() {
   // store chats
@@ -141,7 +142,7 @@ export default function PageHome() {
                   </div>
                 </div>
               )}
-              <>
+              <AnimateChats>
                 {chats?.length > 0 &&
                   chats?.map((item, index) => (
                     <Fragment key={index}>
@@ -178,7 +179,7 @@ export default function PageHome() {
                       </div>
                     </Fragment>
                   ))}
-              </>
+              </AnimateChats>
               {loading && (
                 <div
                   className="text-center flex justify-center py-4"
