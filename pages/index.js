@@ -15,6 +15,7 @@ import {
 } from "../components/Icon";
 import ClientSide from "../components/ClientSide";
 import AnimateChats from "../components/AnimateChats";
+import { Dialog } from "@headlessui/react";
 
 export default function PageHome() {
   // store chats
@@ -34,20 +35,6 @@ export default function PageHome() {
       addChat(text);
       // set text to default
       setText("");
-    }
-  };
-
-  // handle remove all chats
-  const handlerRemoveAllChats = () => {
-    if (confirm(`Are you sure to delete all chat?`)) {
-      removeAllChat();
-    }
-  };
-
-  // handle remove one chat
-  const handlerRemoveOneChat = (item) => {
-    if (confirm(`Are you sure to delete chat ${item.chat}?`)) {
-      removeOneChat(item);
     }
   };
 
@@ -73,6 +60,12 @@ export default function PageHome() {
       loadingRef?.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [loading, loadingRef]);
+
+  // state modal remove all
+  const [modalRemoveAll, setModalRemoveAll] = useState(false);
+
+  // state modal remove one
+  const [modalRemoveOne, setModalRemoveOne] = useState();
 
   return (
     // client side it means client side rendering
@@ -107,13 +100,52 @@ export default function PageHome() {
               </div>
 
               {chats.length > 1 && (
-                <div
-                  className="flex items-center px-1"
-                  onClick={handlerRemoveAllChats}
-                >
-                  <button type="button">
+                <div className="flex items-center px-1">
+                  <button type="button" onClick={() => setModalRemoveAll(true)}>
                     <IconTrash />
                   </button>
+
+                  <Dialog
+                    as="div"
+                    className="relative z-40"
+                    open={modalRemoveAll}
+                    onClose={() => setModalRemoveAll(false)}
+                  >
+                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                    <div className="fixed inset-0 overflow-y-auto">
+                      <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                          <Dialog.Title
+                            as="h3"
+                            className="font-medium leading-6 text-gray-900"
+                          >
+                            Are you sure ?
+                          </Dialog.Title>
+                          <Dialog.Description className="mt-1">
+                            Are you sure delete all chat ?
+                          </Dialog.Description>
+                          <div className="mt-4 flex justify-end space-x-4">
+                            <button
+                              type="button"
+                              className="inline-flex justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
+                              onClick={() => setModalRemoveAll(false)}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              className="inline-flex justify-center rounded-md bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
+                              onClick={() => {
+                                setModalRemoveAll(false), removeAllChat();
+                              }}
+                            >
+                              Yes, delete all chats
+                            </button>
+                          </div>
+                        </Dialog.Panel>
+                      </div>
+                    </div>
+                  </Dialog>
                 </div>
               )}
             </div>
@@ -158,9 +190,56 @@ export default function PageHome() {
                           </span>
                         </div>
 
-                        <div onClick={() => handlerRemoveOneChat(item)}>
-                          <IconProfile />
+                        <div>
+                          <button
+                            type="button"
+                            onClick={() => setModalRemoveOne(index)}
+                          >
+                            <IconProfile />
+                          </button>
                         </div>
+
+                        <Dialog
+                          as="div"
+                          className="relative z-40"
+                          open={modalRemoveOne === index}
+                          onClose={() => setModalRemoveOne()}
+                        >
+                          <div className="fixed inset-0 bg-black bg-opacity-25" />
+                          <div className="fixed inset-0 overflow-y-auto">
+                            <div className="flex min-h-full items-center justify-center p-4 text-center">
+                              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Title
+                                  as="h3"
+                                  className="font-medium leading-6 text-gray-900"
+                                >
+                                  Are you sure ?
+                                </Dialog.Title>
+                                <Dialog.Description className="mt-1">
+                                  Are you sure delete chat {item.chat} ?
+                                </Dialog.Description>
+                                <div className="mt-4 flex justify-end space-x-4">
+                                  <button
+                                    type="button"
+                                    className="inline-flex justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
+                                    onClick={() => setModalRemoveOne()}
+                                  >
+                                    Cancel
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="inline-flex justify-center rounded-md bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
+                                    onClick={() => {
+                                      setModalRemoveOne(), removeOneChat(item);
+                                    }}
+                                  >
+                                    Yes, delete
+                                  </button>
+                                </div>
+                              </Dialog.Panel>
+                            </div>
+                          </div>
+                        </Dialog>
                       </div>
                       <div className="flex w-full mt-2 space-x-3 max-w-xs">
                         <div>
