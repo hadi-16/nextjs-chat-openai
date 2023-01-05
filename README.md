@@ -30,7 +30,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
 
 ```shell
-.
+structure folder app
 
 ├── components                      # Components folder
 ├── pages                           # Next JS Pages
@@ -39,6 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ├── styles                          # Next JS Style
 ├── README.md                       # README file
 ├── tailwind.config.js              # Tailwind CSS configuration
+├── .env                            # Next JS environment variables
 ```
 
 ### Features
@@ -48,6 +49,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - 💎 Integrate Styling with [Tailwind CSS](https://tailwindcss.com)
 - ⚙️ State Management with [Zustand](https://www.npmjs.com/package/zustand)
 - 🔦 Animation Chats with [AutoAnimate](https://auto-animate.formkit.com)
+
+### Demo app
+Open [https://chat.hadi.pw](https://chat.hadi.pw) the url in your browser for the demo application.
+
+### Screenshoot app
 
 | Screenshot Chat | Screenshot Chats |
 | --- | --- |
