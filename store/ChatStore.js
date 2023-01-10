@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import create from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -40,18 +41,32 @@ export const ChatStore = create(
             loading: false,
           }));
         } catch (err) {
-          console.log(err);
+          // toast error
+          toast.error(
+            err.response && err.response.data.message
+              ? err.response.data.message
+              : err.message
+          );
+          // console.log(err);
+          set(() => ({ chat: {} }));
           set(() => ({ loading: false }));
         }
       },
       // remove one chat
-      removeOneChat: (item) =>
+      removeOneChat: (item) => {
+        // toast success
+        toast.success(`Success delete ${item.chat}`);
         // remove one chat by index
         set((state) => ({
           chats: state.chats.filter((x) => x !== item),
-        })),
+        }));
+      },
       // remove all chats
-      removeAllChat: () => set({ chats: [] }),
+      removeAllChat: () => {
+        // toast success
+        toast.success(`Success delete all chats`);
+        set({ chats: [] });
+      },
     }),
     // set local storage
     {
