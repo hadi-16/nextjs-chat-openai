@@ -19,9 +19,8 @@ import { Dialog } from "@headlessui/react";
 
 export default function PageHome() {
   // store chats
-  const { chats, addChat, loading, removeAllChat, removeOneChat } = ChatStore(
-    (state) => state
-  );
+  const { chats, chat, addChat, loading, removeAllChat, removeOneChat } =
+    ChatStore((state) => state);
 
   // state text
   const [text, setText] = useState("");
@@ -259,6 +258,24 @@ export default function PageHome() {
                     </Fragment>
                   ))}
               </AnimateChats>
+              {chat?.chat && (
+                <div className="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
+                  <div>
+                    <div className="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+                      <p className="text-sm leading-relaxed">{chat.chat}</p>
+                    </div>
+                    <span className="text-xs text-gray-500 leading-none">
+                      {formatDate(chat.date)}
+                    </span>
+                  </div>
+
+                  <div>
+                    <button type="button">
+                      <IconProfile />
+                    </button>
+                  </div>
+                </div>
+              )}
               {loading && (
                 <div
                   className="text-center flex justify-center py-4"
