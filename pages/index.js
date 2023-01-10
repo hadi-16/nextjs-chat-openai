@@ -16,6 +16,7 @@ import {
 import ClientSide from "../components/ClientSide";
 import AnimateChats from "../components/AnimateChats";
 import { Dialog } from "@headlessui/react";
+import { Toaster } from "react-hot-toast";
 
 export default function PageHome() {
   // store chats
@@ -69,6 +70,7 @@ export default function PageHome() {
   return (
     // client side it means client side rendering
     <ClientSide>
+      <Toaster />
       <Head>
         <title>NextJS Chat OpenAI</title>
       </Head>
