@@ -57,4 +57,4 @@ Open [https://chat.hadi.pw](https://chat.hadi.pw) the url in your browser for th
 
 | Screenshot Chat | Screenshot Chats |
 | --- | --- |
-| ![SS Chat](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chat.jpeg?raw=true "ss nextjs chat openai") | ![SS Chats](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chats.jpeg?raw=true "ss nextjs chat openai") |
+| ![SS Chat](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chat.png?raw=true "ss nextjs chat openai") | ![SS Chats](https://github.com/hadi-16/nextjs-chat-openai/blob/main/public/image/ss-chats.png?raw=true "ss nextjs chat openai") |
