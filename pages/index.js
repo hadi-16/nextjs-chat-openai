@@ -110,16 +110,14 @@ export default function PageHome() {
                     as="div"
                     className="relative z-40"
                     open={modalRemoveAll}
-                    onClose={() => setModalRemoveAll(false)}
-                  >
+                    onClose={() => setModalRemoveAll(false)}>
                     <div className="fixed inset-0 bg-black bg-opacity-25" />
                     <div className="fixed inset-0 overflow-y-auto">
                       <div className="flex min-h-full items-center justify-center p-4 text-center">
                         <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                           <Dialog.Title
                             as="h3"
-                            className="font-medium leading-6 text-gray-900"
-                          >
+                            className="font-medium leading-6 text-gray-900">
                             Are you sure ?
                           </Dialog.Title>
                           <Dialog.Description className="mt-1">
@@ -128,9 +126,8 @@ export default function PageHome() {
                           <div className="mt-4 flex justify-end space-x-4">
                             <button
                               type="button"
-                              className="inline-flex justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
-                              onClick={() => setModalRemoveAll(false)}
-                            >
+                              className="inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+                              onClick={() => setModalRemoveAll(false)}>
                               Cancel
                             </button>
                             <button
@@ -138,8 +135,7 @@ export default function PageHome() {
                               className="inline-flex justify-center rounded-md bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
                               onClick={() => {
                                 setModalRemoveAll(false), removeAllChat();
-                              }}
-                            >
+                              }}>
                               Yes, delete all chats
                             </button>
                           </div>
@@ -158,8 +154,7 @@ export default function PageHome() {
               {chats?.length === 0 && (
                 <div
                   className="flex items-center justify-center h-full w-full"
-                  ref={chatRef}
-                >
+                  ref={chatRef}>
                   <div className="text-center text-gray-600">
                     <p>No message here...</p>
                     <p>Send a message or tap the greeting icon below</p>
@@ -167,8 +162,7 @@ export default function PageHome() {
                       <button
                         type="button"
                         className="my-10"
-                        onClick={() => addChat("Hello, how are you?")}
-                      >
+                        onClick={() => addChat("Hello, how are you?")}>
                         <IconHand loading={loading} />
                       </button>
                     </div>
@@ -180,8 +174,8 @@ export default function PageHome() {
                   chats?.map((item, index) => (
                     <Fragment key={index}>
                       <div className="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                        <div>
-                          <div className="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+                        <div className="relative">
+                          <div className="after:content-['▸'] after:absolute after:top-0 after:right-0 after:translate-x-4 after:text-3xl after:text-blue-600 bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
                             <p className="text-sm leading-relaxed">
                               {item.chat}
                             </p>
@@ -194,8 +188,7 @@ export default function PageHome() {
                         <div>
                           <button
                             type="button"
-                            onClick={() => setModalRemoveOne(index)}
-                          >
+                            onClick={() => setModalRemoveOne(index)}>
                             <IconProfile />
                           </button>
                         </div>
@@ -204,16 +197,14 @@ export default function PageHome() {
                           as="div"
                           className="relative z-40"
                           open={modalRemoveOne === index}
-                          onClose={() => setModalRemoveOne()}
-                        >
+                          onClose={() => setModalRemoveOne()}>
                           <div className="fixed inset-0 bg-black bg-opacity-25" />
                           <div className="fixed inset-0 overflow-y-auto">
                             <div className="flex min-h-full items-center justify-center p-4 text-center">
                               <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                                 <Dialog.Title
                                   as="h3"
-                                  className="font-medium leading-6 text-gray-900"
-                                >
+                                  className="font-medium leading-6 text-gray-900">
                                   Are you sure ?
                                 </Dialog.Title>
                                 <Dialog.Description className="mt-1">
@@ -222,9 +213,8 @@ export default function PageHome() {
                                 <div className="mt-4 flex justify-end space-x-4">
                                   <button
                                     type="button"
-                                    className="inline-flex justify-center rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200"
-                                    onClick={() => setModalRemoveOne()}
-                                  >
+                                    className="inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100"
+                                    onClick={() => setModalRemoveOne()}>
                                     Cancel
                                   </button>
                                   <button
@@ -232,8 +222,7 @@ export default function PageHome() {
                                     className="inline-flex justify-center rounded-md bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200"
                                     onClick={() => {
                                       setModalRemoveOne(), removeOneChat(item);
-                                    }}
-                                  >
+                                    }}>
                                     Yes, delete
                                   </button>
                                 </div>
@@ -246,8 +235,8 @@ export default function PageHome() {
                         <div>
                           <IconRobot />
                         </div>
-                        <div>
-                          <div className="bg-gray-200 p-3 rounded-r-lg rounded-bl-lg">
+                        <div className="relative">
+                          <div className="before:content-['◂'] before:absolute before:top-0 before:left-0 before:-translate-x-4 before:text-3xl before:text-gray-200 bg-gray-200 p-3 rounded-r-lg rounded-bl-lg">
                             <p className="text-sm leading-relaxed">
                               {item.answer}
                             </p>
@@ -260,10 +249,10 @@ export default function PageHome() {
                     </Fragment>
                   ))}
               </AnimateChats>
-              {chat?.chat && (
+              {chats?.length > 0 && chat?.chat && (
                 <div className="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end">
-                  <div>
-                    <div className="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+                  <div className="relative">
+                    <div className="after:content-['▸'] after:absolute after:top-0 after:right-0 after:translate-x-4 after:text-3xl after:text-blue-600 bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
                       <p className="text-sm leading-relaxed">{chat.chat}</p>
                     </div>
                     <span className="text-xs text-gray-500 leading-none">
@@ -281,8 +270,7 @@ export default function PageHome() {
               {loading && (
                 <div
                   className="text-center flex justify-center py-4"
-                  ref={loadingRef}
-                >
+                  ref={loadingRef}>
                   <IconLoadingHourglass />
                 </div>
               )}
@@ -302,8 +290,7 @@ export default function PageHome() {
                 />
                 <button
                   type="submit"
-                  className="absolute right-8 top-2 change-color fill-gray-300"
-                >
+                  className="absolute right-8 top-2 change-color fill-gray-300">
                   {loading ? <IconLoadingSend /> : <IconSend />}
                 </button>
               </form>
