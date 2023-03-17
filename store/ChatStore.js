@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import create from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 // initial chat store
 export const ChatStore = create(
@@ -71,7 +71,7 @@ export const ChatStore = create(
     // set local storage
     {
       name: "next-openai-chats",
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
